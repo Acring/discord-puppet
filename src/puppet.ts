@@ -124,8 +124,8 @@ export default class Puppet {
         return this.parseMessage(li)
     }
 
-    async getMessage(messageId: string): Promise<Message> {
-        const li = await this.page.$(`li[id="${messageId}"]`)
+    async getMessage(messageId: string, channelId: string): Promise<Message> {
+        const li = await this.page.$(`li[id="chat-messages-${channelId}-${messageId}"]`)
         if (li == null) {
             throw new Error(`Message ${messageId} not found`)
         }

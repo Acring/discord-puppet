@@ -43,8 +43,8 @@ export default class MidjourneyPuppet extends Puppet {
      * @param option midjourney will create 4 images, you can enlarge any of those
      * @param loading you will be notified each time the image loading reach a new step
      */
-    async imageEnlarge(messageId: string, option: EnlargeType, loading?: (string) => void): Promise<Message> {
-        const message = await this.getMessage(messageId)
+    async imageEnlarge(messageId: string, channelId: string, option: EnlargeType, loading?: (string) => void): Promise<Message> {
+        const message = await this.getMessage(messageId, channelId);
         if (message.actions[option] == null) {
             throw new Error(`Option ${option} not found`)
         }
@@ -57,8 +57,8 @@ export default class MidjourneyPuppet extends Puppet {
      * @param option midjourney will create 4 images, you can get a variation any of those
      * @param loading you will be notified each time the image loading reach a new step
      */
-    async imageVariation(messageId: string, option: VariationType, loading?: (string) => void): Promise<Message> {
-        const message = await this.getMessage(messageId)
+    async imageVariation(messageId: string, channelId: string, option: VariationType, loading?: (string) => void): Promise<Message> {
+        const message = await this.getMessage(messageId, channelId);
         if (message.actions[option] == null) {
             throw new Error(`Option ${option} not found`)
         }
